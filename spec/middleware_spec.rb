@@ -7,6 +7,13 @@ describe FontAssets::Middleware do
     request app, '/'
   end
 
+  context 'for mounted app' do
+    it 'passes all Rack::Lint checks' do
+      app = Rack::Lint.new(load_app)
+      request app, ''
+    end
+  end
+
   context 'for GET requests' do
     context 'to font assets' do
       context 'with an app that allows ssl' do
